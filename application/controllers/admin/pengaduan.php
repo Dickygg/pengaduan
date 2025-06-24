@@ -1,0 +1,65 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+
+
+class pengaduan extends MY_Controller
+{
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('Usermodel');
+        $this->load->model('PengaduanM');
+        $this->cek_login();
+        $this->cek_admin();
+    }
+
+
+
+    public function index()
+    {
+        $data['pengaduan'] = $this->PengaduanM->getPengaduanWithUser()->result_array();
+        $user['user'] = $this->Usermodel->cekData(['email' => $this->session->userdata('email')])->row_array();
+        $judul['judul'] = 'Data Pengaduan';
+
+        
+        $this->load->view('Tamplate/view-header', $judul);
+        $this->load->view('Tamplate/view-sidebar');
+        $this->load->view('Tamplate/view-topbar', $user);
+        $this->load->view('admin/pengaduan', $data);
+        $this->load->view('Tamplate/view-footer');
+    }
+
+    public function hapus($id_pengaduan)
+    {
+        if ($this->PengaduanM->hapus($id_pengaduan)) {
+            $this->session->set_flashdata('success', "Pengaduan berhasil di hapus");
+            redirect('admin/pengaduan');
+        } else {
+            $this->session->set_flashdata('error', "gagal mengahpus pengaduan");
+            redirect('admin/pengaduan');
+        }
+    }
+
+    public function edit()
+    {
+        $id = $this->input->post('id_pengaduan');
+        $data = [
+            'status' => $this->input->post('status')
+        ];
+        if ($this->PengaduanM->editdatapengaduan($data, $id)) {
+            $this->session->set_flashdata('success', 'Data Pengaduan berhasil diupdate!');
+        } else {
+            $this->session->set_flashdata('error', 'Gagal update data Pengaduan.');
+        }
+
+        redirect('admin/pengaduan');
+    }
+
+       public function cetak()
+    {
+        $data['pengaduan'] = $this->PengaduanM->getPengaduanWithUser()->result_array();
+
+        $this->export_pdf('laporan/laporan_pengaduan',$data,'Laporan Pengaduan');
+    }
+}

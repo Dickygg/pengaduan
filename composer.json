@@ -1,0 +1,6 @@
+{
+    "name": "asus/pengaduan",
+    "require": {
+        "dompdf/dompdf": "^3.1"
+    }
+}
