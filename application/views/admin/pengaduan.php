@@ -1,16 +1,14 @@
-
-
 <div class="container-fluid">
-     <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Daftar Pengaduan</h1>
-        <a href="<?= base_url('admin/pengaduan/cetak')?>" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+        <a href="" data-toggle="modal" data-target="#printModal" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
 
     </div>
     <div class="card shadow mb-4">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h6 class="m-0 font-weight-bold text-primary ">DataTables Example</h6>
-            
+
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -39,16 +37,22 @@
                                 <td><?= $p['isi_laporan']; ?></td>
                                 <td><?php if ($p['status'] == 'Terkirim'): ?>
 
-                                        <div class="card bg-danger text-white ">
+                                        <div class="card bg-primary text-white ">
                                             <p class=" m-2 text-center" style="font-weight: bold;">Terkirim</p>
 
                                         </div>
-                                    <?php else : ?>
+                                    <?php elseif ($p['status'] == 'Selesai') : ?>
                                         <div class="card bg-success text-white ">
                                             <p class=" m-2 text-center" style="font-weight: bold;">Selesai</p>
 
                                         </div>
-                                    <?php endif; ?></td>
+                                    <?php else : ?>
+                                        <div class="card bg-warning text-white ">
+                                            <p class=" m-2 text-center" style="font-weight: bold;">Diproses</p>
+
+                                        </div>
+                                    <?php endif; ?>
+                                </td>
                                 <td><?= date('Y-m-d', strtotime($p['tanggal'])); ?></td>
                                 <td><?= $p['foto']; ?></td>
                                 <!-- <td><img style="width: 100px;" src="<?= base_url('assets/img/uploads/') . $a['gambar']; ?>"></td> -->
@@ -179,6 +183,35 @@
         </div>
     </div>
 </div>
+
+<!-- Hapus Modal -->
+<div class="modal fade" id="printModal" tabindex="-1" role="dialog" aria-labelledby="printModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="printModalLabel">Pilih Data Yang Mau Dicetak</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <div class="modal-body text-center">
+                <div class="d-flex flex-wrap justify-content-center ">
+
+                    <a href="<?= site_url('admin/pengaduan/cetak'); ?>" class="btn btn-primary m-1">Semua Data</a>
+                    <a href="<?= site_url('admin/pengaduan/cetak/selesai'); ?>" class="btn btn-success m-1">Data Selesai</a>
+                    <a href="<?= site_url('admin/pengaduan/cetak/proses'); ?>" class="btn btn-warning m-1">Data Proses</a>
+                    <a href="<?= site_url('admin/pengaduan/cetak/terkirim'); ?>" class="btn btn-secondary m-1">Data Terkirim</a>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
 <!-- script edit -->
 <script>
     $(document).on('click', 'button[data-target="#editModal"]', function() {

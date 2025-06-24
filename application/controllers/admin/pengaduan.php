@@ -56,10 +56,17 @@ class pengaduan extends MY_Controller
         redirect('admin/pengaduan');
     }
 
-       public function cetak()
-    {
-        $data['pengaduan'] = $this->PengaduanM->getPengaduanWithUser()->result_array();
+       public function cetak($status = null)
+    {   
 
+        if(!$status){
+
+            $data['pengaduan'] = $this->PengaduanM->getPengaduanWithUser()->result_array();
+        }else{
+            if($status == 'selesai'){
+                $data['pengaduan'] = $this->PengaduanM->getPengaduanWithUser()->result_array();
+            }
+        }
         $this->export_pdf('laporan/laporan_pengaduan',$data,'Laporan Pengaduan');
     }
 }

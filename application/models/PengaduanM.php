@@ -27,4 +27,9 @@ class PengaduanM extends CI_Model{
         return $this->db->delete('pengaduan');
     }
 
+        public function getpengaduanWhere($where = null)
+    {
+        return $this->db->get_where('pengaduan', $where);
+    }
+
 }
