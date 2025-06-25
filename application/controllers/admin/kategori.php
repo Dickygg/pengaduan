@@ -61,4 +61,22 @@ class kategori extends MY_Controller
 
         $this->export_pdf('laporan/laporan_kategori', $data, 'Laporan Kategori');
     }
+
+    public function cetakexcel()
+    {
+        $data = $this->kategoriM->getdata()->result_array();
+        
+        $header= ['No','Kategori'];
+        $rows = [];
+        $no = 1;
+
+        foreach($data as $d){
+            $rows[]=[
+                $no++,
+                $d['kategori']
+            ];
+        }
+
+        $this->export_excel('Kategori',$header,$rows);
+    }
 }

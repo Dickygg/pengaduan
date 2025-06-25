@@ -112,4 +112,28 @@ class MY_Controller extends CI_Controller
         // Download ke browser
         $dompdf->stream("$filename.pdf", array("Attachment" => 0));
     }
+
+    // Function export ke Excel via HTML Table
+    public function export_excel($filename, $header, $data)
+    {
+        header("Content-type: application/vnd.ms-excel");
+        header("Content-Disposition: attachment; filename={$filename}.xls");
+
+        echo "<table border='1'>";
+        echo "<tr>";
+        foreach ($header as $head) {
+            echo "<th>{$head}</th>";
+        }
+        echo "</tr>";
+
+        foreach ($data as $row) {
+            echo "<tr>";
+            foreach ($row as $cell) {
+                echo "<td>{$cell}</td>";
+            }
+            echo "</tr>";
+        }
+
+        echo "</table>";
+    }
 }

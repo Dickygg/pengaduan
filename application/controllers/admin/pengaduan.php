@@ -72,4 +72,40 @@ class pengaduan extends MY_Controller
 
         $this->export_pdf('laporan/laporan_pengaduan', $data, 'Laporan Pengaduan');
     }
+
+    public function cetakexcel($status = null)
+    {
+        if (!$status) {
+
+            $data = $this->PengaduanM->getPengaduanWithUser()->result_array();
+            $filename = '';
+        } elseif ($status == 'selesai') {
+            $data = $this->PengaduanM->getPengaduanWithUserbystatus(['status' => $status])->result_array();
+            $filename = 'SELESAI';
+        } elseif ($status == 'proses') {
+            $data = $this->PengaduanM->getPengaduanWithUserbystatus(['status' => $status])->result_array();
+            $filename = "PROSES";
+        } else {
+            $data = $this->PengaduanM->getPengaduanWithUserbystatus(['status' => $status])->result_array();
+            $filename = 'TERKIRIM';
+        }
+
+        $header = ['No', 'NAMA','KATEGORI','ISI LAPORAN','STATUS' ,'TANGGAL','BUKTI'];
+        $rows = [];
+        $no = 1;
+
+        foreach ($data as $p) {
+            $rows[] = [
+                $no++,
+                $p['nama'],
+                $p['kategori'],
+                $p['isi_laporan'],
+                $p['status'],
+                date('Y-m-d', strtotime($p['tanggal'])),
+                $p['foto']
+            ];
+        }
+
+        $this->export_excel('Pengaduan' . $filename, $header, $rows);
+    }
 }

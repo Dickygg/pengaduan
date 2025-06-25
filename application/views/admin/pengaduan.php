@@ -1,8 +1,13 @@
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Daftar Pengaduan</h1>
-        <a href="" data-toggle="modal" data-target="#printModal" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+        <div>
+            <a href="" data-toggle="modal" data-target="#printModal" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                    class="fas fa-download fa-sm text-white-50"></i> Generate PDF</a>
+            <a href="" data-toggle="modal" data-target="#excelModal" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
+                    class="fas fa-download fa-sm text-white-50"></i> Generate Excel</a>
+
+        </div>
 
     </div>
     <div class="card shadow mb-4">
@@ -184,7 +189,7 @@
     </div>
 </div>
 
-<!-- Hapus Modal -->
+<!-- PDF Modal -->
 <div class="modal fade" id="printModal" tabindex="-1" role="dialog" aria-labelledby="printModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -203,6 +208,33 @@
                     <a href="<?= site_url('admin/pengaduan/cetak/selesai'); ?>" class="btn btn-success m-1">Data Selesai</a>
                     <a href="<?= site_url('admin/pengaduan/cetak/Diproses'); ?>" class="btn btn-warning m-1">Data Proses</a>
                     <a href="<?= site_url('admin/pengaduan/cetak/terkirim'); ?>" class="btn btn-secondary m-1">Data Terkirim</a>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- EXCEL MODAL -->
+<div class="modal fade" id="excelModal" tabindex="-1" role="dialog" aria-labelledby="excelModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="printModalLabel">Pilih Data Yang Mau Dicetak</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <div class="modal-body text-center">
+                <div class="d-flex flex-wrap justify-content-center ">
+
+                    <a href="<?= site_url('admin/pengaduan/cetakexcel'); ?>" class="btn btn-primary m-1">Semua Data</a>
+                    <a href="<?= site_url('admin/pengaduan/cetakexcel/selesai'); ?>" class="btn btn-success m-1">Data Selesai</a>
+                    <a href="<?= site_url('admin/pengaduan/cetakexcel/Diproses'); ?>" class="btn btn-warning m-1">Data Proses</a>
+                    <a href="<?= site_url('admin/pengaduan/cetakexcel/terkirim'); ?>" class="btn btn-secondary m-1">Data Terkirim</a>
 
                 </div>
             </div>
