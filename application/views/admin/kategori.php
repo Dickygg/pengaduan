@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Daftar kategori</h1>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+        <a href="<?=base_url('admin/kategori/cetak')?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
 
     </div>
@@ -21,7 +21,7 @@
                     <thead>
                         <tr>
                             <th>no</th>
-                            <th>Nama Pengadu</th>
+                            <th>Nama Kategori</th>
                             <th>Aksi</th>
                     </thead>
 

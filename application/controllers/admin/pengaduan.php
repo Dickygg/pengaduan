@@ -22,7 +22,7 @@ class pengaduan extends MY_Controller
         $user['user'] = $this->Usermodel->cekData(['email' => $this->session->userdata('email')])->row_array();
         $judul['judul'] = 'Data Pengaduan';
 
-        
+
         $this->load->view('Tamplate/view-header', $judul);
         $this->load->view('Tamplate/view-sidebar');
         $this->load->view('Tamplate/view-topbar', $user);
@@ -56,17 +56,20 @@ class pengaduan extends MY_Controller
         redirect('admin/pengaduan');
     }
 
-       public function cetak($status = null)
-    {   
+    public function cetak($status = null)
+    {
 
-        if(!$status){
+        if (!$status) {
 
             $data['pengaduan'] = $this->PengaduanM->getPengaduanWithUser()->result_array();
-        }else{
-            if($status == 'selesai'){
-                $data['pengaduan'] = $this->PengaduanM->getPengaduanWithUser()->result_array();
-            }
+        } elseif ($status == 'selesai') {
+            $data['pengaduan'] = $this->PengaduanM->getPengaduanWithUserbystatus(['status' => $status])->result_array();
+        } elseif ($status == 'proses') {
+            $data['pengaduan'] = $this->PengaduanM->getPengaduanWithUserbystatus(['status' => $status])->result_array();
+        } else {
+            $data['pengaduan'] = $this->PengaduanM->getPengaduanWithUserbystatus(['status' => $status])->result_array();
         }
-        $this->export_pdf('laporan/laporan_pengaduan',$data,'Laporan Pengaduan');
+
+        $this->export_pdf('laporan/laporan_pengaduan', $data, 'Laporan Pengaduan');
     }
 }

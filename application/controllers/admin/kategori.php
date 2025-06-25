@@ -53,4 +53,12 @@ class kategori extends MY_Controller
             redirect('admin/kategori');
         }
     }
+
+
+    public function cetak()
+    {
+        $data['kategori'] = $this->kategoriM->getdata()->result_array();
+
+        $this->export_pdf('laporan/laporan_kategori', $data, 'Laporan Kategori');
+    }
 }

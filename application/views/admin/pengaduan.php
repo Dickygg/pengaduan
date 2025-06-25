@@ -201,7 +201,7 @@
 
                     <a href="<?= site_url('admin/pengaduan/cetak'); ?>" class="btn btn-primary m-1">Semua Data</a>
                     <a href="<?= site_url('admin/pengaduan/cetak/selesai'); ?>" class="btn btn-success m-1">Data Selesai</a>
-                    <a href="<?= site_url('admin/pengaduan/cetak/proses'); ?>" class="btn btn-warning m-1">Data Proses</a>
+                    <a href="<?= site_url('admin/pengaduan/cetak/Diproses'); ?>" class="btn btn-warning m-1">Data Proses</a>
                     <a href="<?= site_url('admin/pengaduan/cetak/terkirim'); ?>" class="btn btn-secondary m-1">Data Terkirim</a>
 
                 </div>

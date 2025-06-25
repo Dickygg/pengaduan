@@ -15,6 +15,15 @@ class PengaduanM extends CI_Model{
     $this->db->join('kategori', 'pengaduan.id_kategori = kategori.id_kategori');
     return $this->db->get();
     }
+    public function getPengaduanWithUserbystatus($where)
+    {
+    $this->db->select('pengaduan.*, users.nama, users.email, users.role, kategori.kategori');
+    $this->db->from('pengaduan');
+    $this->db->join('users', 'pengaduan.id_user = users.id_user');
+    $this->db->join('kategori', 'pengaduan.id_kategori = kategori.id_kategori');
+    $this->db->where($where);
+    return $this->db->get();
+    }
 
     public function editdatapengaduan($data,$id)
     {
@@ -27,9 +36,6 @@ class PengaduanM extends CI_Model{
         return $this->db->delete('pengaduan');
     }
 
-        public function getpengaduanWhere($where = null)
-    {
-        return $this->db->get_where('pengaduan', $where);
-    }
+
 
 }
