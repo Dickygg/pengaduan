@@ -13,8 +13,9 @@ class User extends MY_Controller
 
     }
 
-    public function index() {
-        echo "hallo pengguna";
+    public function index() 
+    {   $judul['judul'] = 'Dashbroad';
+        $this->load->view('dashbroadPengguna',$judul);
 
     }
 }
