@@ -1,15 +1,17 @@
 <?
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Register extends CI_Controller{
+class Register extends CI_Controller
+{
 
-        public function index(){
+    public function index()
+    {
 
 
-            $Title['judul'] = "Login";
+        $Title['judul'] = "Login";
 
-            $this->load->view('auth/header', $Title);
-            $this->load->view('auth/register');
-            $this->load->view('auth/footer');
-        }
+        $this->load->view('auth/header', $Title);
+        $this->load->view('auth/register');
+        $this->load->view('auth/footer');
+    }
 }

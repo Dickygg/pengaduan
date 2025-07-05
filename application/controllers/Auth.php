@@ -58,7 +58,7 @@ class Auth extends CI_Controller
                 ];
                 $this->session->set_userdata($data);
                 if ($user['role'] == 'pengguna') {
-                    redirect('Pengguna/User');
+                    redirect('Pengguna/dashbroadP');
                 } else {
                     redirect('admin/dashbroad');
                 }
@@ -126,6 +126,6 @@ class Auth extends CI_Controller
         $this->session->unset_userdata('nama');
 
         $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-message" role="alert">Anda telah logout!</div>');
-        redirect('Auth');
+        redirect('User');
     }
 }

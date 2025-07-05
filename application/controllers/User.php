@@ -13,6 +13,6 @@ class User extends MY_Controller
     public function index()
     {
         $judul['judul'] = 'Dashbroad';
-        $this->load->view('dashbroadPengguna', $judul);
+        $this->load->view('Home', $judul);
     }
 }
