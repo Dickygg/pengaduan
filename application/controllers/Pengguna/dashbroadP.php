@@ -8,6 +8,7 @@ class dashbroadP extends MY_Controller
     {
         parent::__construct();
         $this->load->model('Usermodel');
+        $this->load->model('PengaduanM');
         $this->cek_login();
         $this->cek_pengguna();
     }
@@ -17,13 +18,11 @@ class dashbroadP extends MY_Controller
 
         $title['judul'] = 'Dashbroad';
         $user['user'] = $this->Usermodel->cekData(['email' => $this->session->userdata('email')])->row_array();
-
-
-
+        $pengaduan['pengaduan'] = $this->PengaduanM->getpengaduanWhere(['id_user' => $this->session->userdata('id_user')])->num_rows();
         $this->load->view('tamplate-pengguna/view-header-P', $title);
         $this->load->view('tamplate-pengguna/view-sidebar-P');
         $this->load->view('tamplate-pengguna/view-topbar-P', $user);
-        $this->load->view('pengguna/dashbroadP');
+        $this->load->view('pengguna/dashbroadP', $pengaduan);
         $this->load->view('tamplate-pengguna/view-footer-P');
     }
 }

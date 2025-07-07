@@ -21,14 +21,14 @@ justify-content-center" href="index.html">
         <!-- Nav Item - Dashboard -->
     <li class="nav-item">
         <a class="nav-link pb-0" href="<?=
-                                        base_url('admin/dashbroad'); ?>">
+                                        base_url('Pengguna/dashbroadP'); ?>">
             <i class="fa fa-fw fa book"></i>
             <span>Dashboard</span></a>
     </li>
     <hr class="sidebar-divider mt-3">
     <!-- Heading -->
     <div class="sidebar-heading">
-        Master Data
+        PENGADUAN
     </div>
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
@@ -37,20 +37,14 @@ justify-content-center" href="index.html">
         <a class="nav-link pb-0" href="<?=
                                         base_url('admin/pengaduan'); ?>">
             <i class="fa fa-fw fa book"></i>
-            <span>Data Pengaduan</span></a>
+            <span>Buat Pengaduan</span></a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link pb-0" href="<?=
-                                        base_url('admin/user'); ?>">
-            <i class="fa fa-fw fa book"></i>
-            <span>Data User</span></a>
-    </li>
+
     <li class="nav-item">
         <a class="nav-link pb-0" href="<?=
                                         base_url('admin/kategori'); ?>">
             <i class="fa fa-fw fa book"></i>
-            <span>Kategori</span></a>
-    </li>
+            <span>History Pengaduan</span></a>
     </li>
     <!-- Divider -->
     <hr class="sidebar-divider mt-3">

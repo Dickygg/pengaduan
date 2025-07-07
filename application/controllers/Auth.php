@@ -19,7 +19,7 @@ class Auth extends CI_Controller
             if ($this->session->userdata('role') == 'admin') {
                 redirect('admin/dashbroad');
             } else {
-                redirect('Pengguna/User');
+                redirect('Pengguna/dashbroadP');
             }
         }
 

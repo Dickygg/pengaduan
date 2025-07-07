@@ -40,7 +40,7 @@ class profile extends MY_Controller
         $this->form_validation->set_rules('email', 'Alamat Email', 'required|trim|valid_email', [
             'required' => 'Email Harus DiIsi!',
             'valid_email' => 'Email Harus benar!',
-            
+
         ]);
 
         if ($this->form_validation->run() == false) {
@@ -65,7 +65,7 @@ class profile extends MY_Controller
                     return;
                 }
             } else {
-                $foto= $this->input->post('gambarlama');
+                $foto = $this->input->post('gambarlama');
             }
 
             $data = [
@@ -77,7 +77,6 @@ class profile extends MY_Controller
             $this->Usermodel->updateUser($data, $id);
             $this->session->set_flashdata('success', 'Data pengaduan berhasil diupdate!');
             redirect('admin/profile');
-
         }
     }
 

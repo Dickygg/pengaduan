@@ -39,7 +39,7 @@ class MY_Controller extends CI_Controller
                 Akses ditolak! Bukan admin.
                 </div>'
             );
-            redirect('auth');
+            redirect('Pengguna/dashbroadP');
         }
     }
 
@@ -53,7 +53,7 @@ class MY_Controller extends CI_Controller
                 Akses ditolak! Bukan pengguna.
                 </div>'
             );
-            redirect('auth');
+            redirect('admin/dashbroad');
         }
     }
 

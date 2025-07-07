@@ -12,7 +12,15 @@ class User extends MY_Controller
 
     public function index()
     {
-        $judul['judul'] = 'Dashbroad';
+        if ($this->session->userdata('email')) {
+            if ($this->session->userdata('role') == 'admin') {
+                redirect('admin/dashbroad');
+            } else {
+                redirect('Pengguna/dashbroadP');
+            }
+        }
+
+        $judul['judul'] = '';
         $this->load->view('Home', $judul);
     }
 }
