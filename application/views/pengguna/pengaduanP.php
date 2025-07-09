@@ -1,17 +1,3 @@
-<style>
-    @media only screen and (max-width: 1430px) {
-        #hapusBTN p {
-            display: none;
-            /* margin-bottom: ; */
-        }
-
-        #editBTN p {
-            display: none;
-        }
-    }
-</style>
-
-
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Daftar Pengaduan</h1>
@@ -40,7 +26,7 @@
                             <th>Isi Laporan</th>
                             <th>Status Laporan</th>
                             <th>Tanggal</th>
-                            <th>No.Hp</th>
+                            <th>Gambar</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -65,11 +51,6 @@
                                             <p class=" m-2 text-center" style="font-weight: bold;">Selesai</p>
 
                                         </div>
-                                    <?php elseif ($p['status'] == 'ditolak') : ?>
-                                        <div class="card bg-danger text-white ">
-                                            <p class=" m-2 text-center" style="font-weight: bold;">Ditolak</p>
-
-                                        </div>
                                     <?php else : ?>
                                         <div class="card bg-warning text-white ">
                                             <p class=" m-2 text-center" style="font-weight: bold;">Diproses</p>
@@ -78,34 +59,28 @@
                                     <?php endif; ?>
                                 </td>
                                 <td><?= date('Y-m-d', strtotime($p['tanggal'])); ?></td>
-                                <td><?= $p['no_hp']; ?></td>
+                                <td><?= $p['foto']; ?></td>
                                 <!-- <td><img style="width: 100px;" src="<?= base_url('assets/img/uploads/') . $a['gambar']; ?>"></td> -->
 
 
 
                                 <td>
-                                    <div class="row aligin-items-center">
-                                        <div class=" col-12" style="margin-bottom: 5px;">
-                                            <button id="hapusBTN" type="button"
-                                                class="btn btn-danger btn-sm mr-2 d-flex"
-                                                data-toggle="modal"
-                                                data-target="#hapusModal<?= $p['id_pengaduan']; ?>">
-                                                <i class="fas fa-trash-alt"></i>
-                                                <p style="margin-bottom: 0;">Hapus</p>
-                                            </button>
-                                        </div>
-                                        <div class="col-12">
-                                            <button id="editBTN" type="button"
-                                                class="btn btn-primary btn-sm d-flex"
-                                                data-toggle="modal"
-                                                data-target="#editModal"
-                                                data-id="<?= $p['id_pengaduan']; ?>"
-                                                data-nama="<?= $p['nama']; ?>"
-                                                data-status="<?= $p['status']; ?>">
-                                                <i class="fas fa-edit"></i>
-                                                <p style="margin-bottom: 0;">Edit</p>
-                                            </button>
-                                        </div>
+                                    <div class="d-flex flex-wrap">
+                                        <a href="#"
+                                            class="btn btn-danger btn-sm mr-2"
+                                            data-toggle="modal"
+                                            data-target="#hapusModal<?= $p['id_pengaduan']; ?>">
+                                            <i class="fas fa-trash-alt"></i> Hapus
+                                        </a>
+                                        <button type="button"
+                                            class="btn btn-primary btn-sm"
+                                            data-toggle="modal"
+                                            data-target="#editModal"
+                                            data-id="<?= $p['id_pengaduan']; ?>"
+                                            data-nama="<?= $p['nama']; ?>"
+                                            data-status="<?= $p['status']; ?>">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </button>
                                     </div>
                                 </td>
 
@@ -167,7 +142,6 @@
                             <option value="Terkirim">Terkirim</option>
                             <option value="Diproses">Diproses</option>
                             <option value="Selesai">Selesai</option>
-                            <option value="ditolak">Ditolak</option>
                         </select>
                     </div>
 
@@ -234,7 +208,6 @@
                     <a href="<?= site_url('admin/pengaduan/cetak/selesai'); ?>" class="btn btn-success m-1">Data Selesai</a>
                     <a href="<?= site_url('admin/pengaduan/cetak/Diproses'); ?>" class="btn btn-warning m-1">Data Proses</a>
                     <a href="<?= site_url('admin/pengaduan/cetak/terkirim'); ?>" class="btn btn-secondary m-1">Data Terkirim</a>
-                    <a href="<?= site_url('admin/pengaduan/cetak/Ditolak'); ?>" class="btn btn-danger m-1">Data Ditolak</a>
 
                 </div>
             </div>
@@ -262,7 +235,6 @@
                     <a href="<?= site_url('admin/pengaduan/cetakexcel/selesai'); ?>" class="btn btn-success m-1">Data Selesai</a>
                     <a href="<?= site_url('admin/pengaduan/cetakexcel/Diproses'); ?>" class="btn btn-warning m-1">Data Proses</a>
                     <a href="<?= site_url('admin/pengaduan/cetakexcel/terkirim'); ?>" class="btn btn-secondary m-1">Data Terkirim</a>
-                    <a href="<?= site_url('admin/pengaduan/cetakexcel/ditolak'); ?>" class="btn btn-danger m-1">Data Ditolak</a>
 
                 </div>
             </div>

@@ -66,6 +66,8 @@ class pengaduan extends MY_Controller
             $data['pengaduan'] = $this->PengaduanM->getPengaduanWithUserbystatus(['status' => $status])->result_array();
         } elseif ($status == 'proses') {
             $data['pengaduan'] = $this->PengaduanM->getPengaduanWithUserbystatus(['status' => $status])->result_array();
+        } elseif ($status == 'ditolak') {
+            $data['pengaduan'] = $this->PengaduanM->getPengaduanWithUserbystatus(['status' => $status])->result_array();
         } else {
             $data['pengaduan'] = $this->PengaduanM->getPengaduanWithUserbystatus(['status' => $status])->result_array();
         }
@@ -82,6 +84,9 @@ class pengaduan extends MY_Controller
         } elseif ($status == 'selesai') {
             $data = $this->PengaduanM->getPengaduanWithUserbystatus(['status' => $status])->result_array();
             $filename = 'SELESAI';
+        } elseif ($status == 'ditolak') {
+            $data = $this->PengaduanM->getPengaduanWithUserbystatus(['status' => $status])->result_array();
+            $filename = 'DITOLAK';
         } elseif ($status == 'proses') {
             $data = $this->PengaduanM->getPengaduanWithUserbystatus(['status' => $status])->result_array();
             $filename = "PROSES";
@@ -90,7 +95,7 @@ class pengaduan extends MY_Controller
             $filename = 'TERKIRIM';
         }
 
-        $header = ['No', 'NAMA','KATEGORI','ISI LAPORAN','STATUS' ,'TANGGAL','BUKTI'];
+        $header = ['No', 'NAMA', 'KATEGORI', 'ISI LAPORAN', 'STATUS', 'TANGGAL', 'BUKTI'];
         $rows = [];
         $no = 1;
 
@@ -102,7 +107,7 @@ class pengaduan extends MY_Controller
                 $p['isi_laporan'],
                 $p['status'],
                 date('Y-m-d', strtotime($p['tanggal'])),
-                $p['foto']
+                $p['no_hp']
             ];
         }
 

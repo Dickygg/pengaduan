@@ -35,7 +35,7 @@ justify-content-center" href="index.html">
         <!-- Nav Item - Dashboard -->
     <li class="nav-item">
         <a class="nav-link pb-0" href="<?=
-                                        base_url('admin/pengaduan'); ?>">
+                                        base_url('Pengguna/pengaduanP'); ?>">
             <i class="fa fa-fw fa book"></i>
             <span>Buat Pengaduan</span></a>
     </li>
