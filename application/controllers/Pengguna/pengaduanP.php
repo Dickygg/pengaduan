@@ -18,7 +18,7 @@ class pengaduanP extends MY_Controller
     {
         $title['judul'] = 'Pengaduan';
         $user['user'] = $this->Usermodel->cekData(['email' => $this->session->userdata('email')])->row_array();
-        $pengaduan['pengaduan'] = $this->PengaduanM->getpengaduanWhere(['id_user' => $this->session->userdata('id_user')])->result_array();
+        $pengaduan['pengaduan'] = $this->PengaduanM->getPengaduanWithUser(['id_user' => $this->session->userdata('id_user')])->result_array();
         $this->load->view('tamplate-pengguna/view-header-P', $title);
         $this->load->view('tamplate-pengguna/view-sidebar-P');
         $this->load->view('tamplate-pengguna/view-topbar-P', $user);

@@ -131,7 +131,7 @@
                         foreach ($pengaduan as $b) { ?>
                             <tr>
                                 <td><?= $i++; ?></td>
-                                <td><?= $b['id_user']; ?></td>
+                                <td><?= $b['nama']; ?></td>
                                 <td><?= $b['isi_laporan']; ?></td>
                                 <td><?= $b['status']; ?></td>
                                 <td><?= date('Y-m-d', strtotime($b['tanggal'])); ?></td>
