@@ -43,4 +43,9 @@ class PengaduanM extends CI_Model
     {
         return $this->db->get_where('pengaduan', $where);
     }
+
+    public function tambahdata($data = null)
+    {
+        return $this->db->insert('pengaduan', $data);
+    }
 }

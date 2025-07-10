@@ -9,6 +9,7 @@ class dashbroadP extends MY_Controller
         parent::__construct();
         $this->load->model('Usermodel');
         $this->load->model('PengaduanM');
+        $this->load->model('kategoriM');
         $this->cek_login();
         $this->cek_pengguna();
     }
