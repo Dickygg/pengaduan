@@ -48,4 +48,14 @@ class PengaduanM extends CI_Model
     {
         return $this->db->insert('pengaduan', $data);
     }
+
+    public function getPengaduanJOINwhere($where)
+    {
+        $this->db->select('pengaduan.*, users.nama, users.email, users.role, kategori.kategori');
+        $this->db->from('pengaduan');
+        $this->db->join('users', 'pengaduan.id_user = users.id_user');
+        $this->db->join('kategori', 'pengaduan.id_kategori = kategori.id_kategori');
+        $this->db->where('pengaduan.id_user', $where['id_user']);
+        return $this->db->get();
+    }
 }

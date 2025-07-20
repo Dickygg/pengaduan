@@ -41,6 +41,7 @@
                             <th>Status Laporan</th>
                             <th>Tanggal</th>
                             <th>No.Hp</th>
+                            <th>Gambar</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -79,7 +80,7 @@
                                 </td>
                                 <td><?= date('Y-m-d', strtotime($p['tanggal'])); ?></td>
                                 <td><?= $p['no_hp']; ?></td>
-                                <!-- <td><img style="width: 100px;" src="<?= base_url('assets/img/uploads/') . $a['gambar']; ?>"></td> -->
+                                <td><img style="width: 100px;" src="<?= base_url('assets/img/uploads/') . $p['gambar']; ?>"></td>
 
 
 

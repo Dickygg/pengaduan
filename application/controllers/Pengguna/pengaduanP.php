@@ -19,7 +19,7 @@ class pengaduanP extends MY_Controller
     {
         $title['judul'] = 'Pengaduan';
         $user['user'] = $this->Usermodel->cekData(['email' => $this->session->userdata('email')])->row_array();
-        $data['pengaduan'] = $this->PengaduanM->getPengaduanWithUser(['id_user' => $this->session->userdata('id_user')])->result_array();
+        $data['pengaduan'] = $this->PengaduanM->getPengaduanJOINwhere(['id_user' => $this->session->userdata('id_user')])->result_array();
         $data['kategori'] = $this->kategoriM->getData()->result_array();
 
         $this->form_validation->set_rules('kategori', 'kategori', 'required', [
